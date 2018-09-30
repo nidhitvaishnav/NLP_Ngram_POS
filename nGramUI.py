@@ -1,5 +1,6 @@
 import sys
 from myUtil import MyUtil
+from nGram import NGram
 class NGramUI:
     
 # |----------------------------------------------------------------------------|
@@ -19,8 +20,18 @@ class NGramUI:
         #1. read file
         myUtil = MyUtil()
         strList = myUtil.readFile(inFile)
-        print(strList)
         
+        
+        #get unigram and bigrams
+        nGram = NGram()
+        #create bigram
+        biGramList = nGram.createBiGram(strList)
+        # debug
+        print("biGramList = {}".format(biGramList))
+        print("len(biGramList) = {}".format(len(biGramList)))
+        # debug -ends
+
+
        
 # |--------------------------------myNGramUI---------------------------------|
     

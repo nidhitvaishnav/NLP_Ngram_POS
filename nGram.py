@@ -61,7 +61,25 @@ class NGram:
         #for biGram -ends
         return probDict
 # |--------------------------------noSmoothing---------------------------------|
+# |----------------------------------------------------------------------------|
+# add1Smoothing
+# |----------------------------------------------------------------------------|
+    def add1Smoothing(self, biGramList, uniGramDict, biGramDict, V):
 
+        '''
+        C* = ((C(Wi-1 Wi)+1)*C(wi-1))/(C(Wi-1)+V)
+        '''
+        probStarDict = {}
+        cStarDict = {}
+        for biGram in biGramList:
+            word, prevWord = biGram
+            biGramCount = biGramDict[biGram]
+            prevWordCount = uniGramDict[prevWord]
+            cStarDict[biGram] = ((biGramCount+1)*prevWordCount)/(prevWordCount+V)
+            probStarDict[biGram] = cStarDict[biGram]/prevWordCount
+        #for biGram -ends
+        return probStarDict, cStarDict
+# |--------------------------------add1Smoothing--------------------------------|
 # |----------------------------------------------------------------------------|
 # goodTuringDiscounting
 # |----------------------------------------------------------------------------|

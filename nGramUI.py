@@ -26,10 +26,20 @@ class NGramUI:
         nGram = NGram()
         #create bigram
         biGramList = nGram.createBiGram(strList)
+
+        #get unigram and bigram counts
+        uniGramDict, uniGramCountV, unigramCountN=nGram.countWords(strList)
+        biGramDict, biGramCountV, bigramCountN = nGram.countWords(biGramList)
         # debug
-        print("biGramList = {}".format(biGramList))
-        print("len(biGramList) = {}".format(len(biGramList)))
+        # debug
+        # debug
+        print("uniGramDict =\n{}".format(uniGramDict))
+        #print("biGramDict =\n{}".format(biGramDict))
+        print("uniGramCountV = {}".format(uniGramCountV))
+        print("biGramCountV = {}".format(biGramCountV))
+        print("biGramCountN = {}".format(bigramCountN))
         # debug -ends
+
 
 
        

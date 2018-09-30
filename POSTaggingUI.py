@@ -1,6 +1,7 @@
 import sys
 from myUtil import MyUtil
 from nGram import NGram
+from POS_Tagging import POS_Tagging
 class POSTaggingUI:
 
 # |----------------------------------------------------------------------------|
@@ -11,7 +12,19 @@ class POSTaggingUI:
         
         '''
         myUtil = MyUtil()
-        corpusList, tagList, lineList = myUtil.readPOSFile(inFile)
+        tagList, wordTagList, lineList = myUtil.readPOSFile(inFile)
+        
+        pos_Tagging = POS_Tagging()
+        tagTagList = pos_Tagging.createTagTagList(wordTagList)
+        # debug
+        print("len(wordTagList = {}, tagTagList = {}".format(len(wordTagList), len(tagTagList)))
+        # debug -ends
+
+        #get unigram and bigram counts
+        tagDict, tagCountV, tagCountN = myUtil.countWords(tagList)
+        tagTagDict, tagTagCountV, tagTagCountN=myUtil.countWords(tagTagList)
+        wordTagDict, wordTagCountV, wordTagCountN = myUtil.countWords(wordTagList)
+
         
         
         
@@ -21,21 +34,6 @@ class POSTaggingUI:
         
 # |---------------------------------myUI---------------------------------------|
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

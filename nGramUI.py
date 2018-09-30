@@ -28,8 +28,8 @@ class NGramUI:
         biGramList = nGram.createBiGram(strList)
 
         #get unigram and bigram counts
-        uniGramDict, uniGramCountV, unigramCountN=nGram.countWords(strList)
-        biGramDict, biGramCountV, bigramCountN = nGram.countWords(biGramList)
+        uniGramDict, uniGramCountV, unigramCountN=myUtil.countWords(strList)
+        biGramDict, biGramCountV, bigramCountN = myUtil.countWords(biGramList)
 
         probDict = nGram.noSmoothing(biGramList, uniGramDict, biGramDict)
         # debug

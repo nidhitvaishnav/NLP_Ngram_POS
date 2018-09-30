@@ -13,6 +13,29 @@ class MyUtil:
         return data
 # |--------------------------------readFile---------------------------------|
 # |----------------------------------------------------------------------------|
+# countWords
+# |----------------------------------------------------------------------------|
+    def countWords(self, strList):
+        '''
+        from the given list, get the unique words in the dictionary and count 
+        them
+        '''
+        myDict = {}
+        totalCountN=0
+        for word in (strList):
+            if word in myDict:
+                myDict[word]+=1
+            else:
+                myDict[word]=1
+            #if word -ends
+            totalCountN+=1
+        #for word -ends
+        countV = len(myDict)
+        return myDict, countV, totalCountN
+        
+# |--------------------------------countWords---------------------------------|
+
+# |----------------------------------------------------------------------------|
 # writeDictInFile
 # |----------------------------------------------------------------------------|
     def writeProbability(self, probDict, outFIle):
@@ -55,8 +78,8 @@ class MyUtil:
         '''
         
         '''
-        corpusList = []
         tagList = []
+        wordTagList = []
         lineList = []
         with open(inFile) as file:
             for line in file:
@@ -64,11 +87,11 @@ class MyUtil:
                 lineList.append(tempList)
                 for item in tempList:
                     word, tag = item.split("_")
-                    corpusList.append(word)
+                    wordTagList.append((word,tag))
                     tagList.append(tag)
             #for -ends
         #with -ends
         file.close()
-        return corpusList, tagList, lineList
+        return tagList, wordTagList, lineList
 # |--------------------------------readPOSFile---------------------------------|
     

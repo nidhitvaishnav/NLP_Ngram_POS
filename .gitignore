@@ -2,3 +2,4 @@
 .pydevproject
 __pycache__/
 no_smoothing_prob.txt
+goodTuring_prob.txt

@@ -29,3 +29,24 @@ class MyUtil:
         file.close()
         return True
 # |--------------------------------writeDictInFile-----------------------------|
+# |----------------------------------------------------------------------------|
+# writeAdd1SmoothingInFile
+# |----------------------------------------------------------------------------|
+    def writeCStarProbability(self, probDict, cStarDict, outFile):
+        '''
+        
+        '''
+        file = open(outFile, "w")
+        for tup in probDict:
+            prevWord, nextWord = tup
+            prob = probDict[tup]
+            cStar = cStarDict[tup]
+            opStr = "("+prevWord+"|"+nextWord+")\t:-\tC*= "+str(cStar)+"\tP*= "+str(prob)+"\n"
+            file.write(opStr)
+        #for -ends
+        file.close()
+        return True
+        
+# |--------------------------------writeAdd1SmoothingInFile---------------------------------|
+    
+    

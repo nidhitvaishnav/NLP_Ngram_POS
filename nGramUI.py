@@ -42,6 +42,11 @@ class NGramUI:
         outFlag = myUtil.writeProbability(probDict, outFile)
         print(outFlag)
 
+        probStrarDict, cStarDict =nGram.goodTuring(biGramList, uniGramDict, \
+                                       biGramDict, uniGramCountV, biGramCountV)
+        outFile = "goodTuring_prob.txt"
+        outFlag = myUtil.writeCStarProbability(probStrarDict, cStarDict, outFile)
+
 
 
 # |--------------------------------myNGramUI---------------------------------|

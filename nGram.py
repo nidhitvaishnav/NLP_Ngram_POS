@@ -62,3 +62,51 @@ class NGram:
         return probDict
 # |--------------------------------noSmoothing---------------------------------|
 
+# |----------------------------------------------------------------------------|
+# goodTuringDiscounting
+# |----------------------------------------------------------------------------|
+    def goodTuring(self, biGramList, uniGramDict, biGramDict, unigramCount, biGramCount):
+        '''
+        
+        '''
+        bucketDict = self.createBucket(biGramList, biGramDict, unigramCount, biGramCount)
+        # debug
+        print("bucketDict =\n {}".format(dict(sorted(bucketDict.items()))))
+        # debug -ends
+        pStarDict = {}
+        cStarDict = {}
+        nXiFi = len(biGramList)
+
+        for bigram in biGramList:
+            count = biGramDict[bigram]
+            nextCount = count+1
+            if nextCount in bucketDict:
+                cStarDict[bigram]=((count+1)*bucketDict[count+1])/bucketDict[count]
+            else:
+                cStarDict[bigram]=0
+            #if -ends
+            pStarDict[bigram]= cStarDict[bigram]/nXiFi  
+        #for -ends
+        return pStarDict, cStarDict
+# |--------------------------------goodTuring---------------------------------|
+# |----------------------------------------------------------------------------|
+# createBucket
+# |----------------------------------------------------------------------------|
+    def createBucket(self, biGramList, biGramDict, unigramCount, biGramCount):
+        '''
+        
+        '''
+        bucketDict = {}
+        for tup in biGramDict:
+            
+            count = biGramDict[tup]
+            if count in bucketDict:
+                bucketDict[count]+=1
+            else:
+                bucketDict[count]=1
+            #if -ends
+        #for tup -ends
+        bucketDict[0]=unigramCount*unigramCount-biGramCount
+        return bucketDict
+# |--------------------------------createBucket---------------------------------|
+    

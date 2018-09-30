@@ -1,5 +1,6 @@
 import sys
 from myUtil import MyUtil
+from nGram import NGram
 class POSTaggingUI:
 
 # |----------------------------------------------------------------------------|
@@ -10,7 +11,11 @@ class POSTaggingUI:
         
         '''
         myUtil = MyUtil()
-        corpusList, tagList = myUtil.readPOSFile(inFile)
+        corpusList, tagList, lineList = myUtil.readPOSFile(inFile)
+        
+        
+        
+        
 
 
         

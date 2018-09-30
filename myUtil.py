@@ -57,9 +57,11 @@ class MyUtil:
         '''
         corpusList = []
         tagList = []
+        lineList = []
         with open(inFile) as file:
             for line in file:
                 tempList = line.split()
+                lineList.append(tempList)
                 for item in tempList:
                     word, tag = item.split("_")
                     corpusList.append(word)
@@ -67,6 +69,6 @@ class MyUtil:
             #for -ends
         #with -ends
         file.close()
-        return corpusList, tagList
+        return corpusList, tagList, lineList
 # |--------------------------------readPOSFile---------------------------------|
     

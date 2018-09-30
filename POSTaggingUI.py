@@ -24,7 +24,14 @@ class POSTaggingUI:
         tagDict, tagCountV, tagCountN = myUtil.countWords(tagList)
         tagTagDict, tagTagCountV, tagTagCountN=myUtil.countWords(tagTagList)
         wordTagDict, wordTagCountV, wordTagCountN = myUtil.countWords(wordTagList)
+        
+        #debug
+        print("wordTagCountV = {}".format(wordTagCountV))
+        print("tagCountV = {}".format(tagCountV))
+        print("tagTagCountV = {}".format(tagTagCountV))
+        # debug -ends
 
+        
         
         
         

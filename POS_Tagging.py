@@ -20,5 +20,36 @@ class POS_Tagging:
         return  tagTagList
         
 # |--------------------------createWordTagDict---------------------------------|
-
+# |----------------------------------------------------------------------------|
+# naiveBayesClassification
+# |----------------------------------------------------------------------------|
+    def naiveBayesClassification(self, wordTagList, lineList, tagDict, wordTagDict, tagTagDict):
+        '''
+        
+        '''
+        for index, wordTag in enumerate(wordTagList):
+            curWord, curTag = wordTag
+            prevWord, prevTag = wordTagList[index-1]
+            curAllTagList = self.findOtherAllWordTags(curWord, wordTagDict)
+            
+            
+        
+# |--------------------------------naiveBayesClassification---------------------------------|
+# |----------------------------------------------------------------------------|
+# findOtherAllWordTags
+# |----------------------------------------------------------------------------|
+    def findOtherAllWordTags(self, inWord, wordTagDict):
+        '''
+        
+        '''
+        currentWordTagList = []
+        for key in wordTagDict:
+            word, tag = key
+            if word==inWord:
+                currentWordTagList.append(tag)
+            #if -ends
+        #for -ends
+        return currentWordTagList
+        
+# |--------------------------findOtherAllWordTags------------------------------|
     

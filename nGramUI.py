@@ -39,7 +39,7 @@ class NGramUI:
         print("biGramCountN = {}".format(bigramCountN))
         # debug -ends
         outFile = "no_smoothing_prob.txt"
-        outFlag = myUtil.writeProbability(probDict, outFile)
+        outFlag = myUtil.writeCStarProbability(probDict, biGramDict, outFile)
         
         probStrarDict, cStarDict = nGram.add1Smoothing(biGramList, uniGramDict,\
                                                      biGramDict, uniGramCountV)

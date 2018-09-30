@@ -23,16 +23,29 @@ class POS_Tagging:
 # |----------------------------------------------------------------------------|
 # naiveBayesClassification
 # |----------------------------------------------------------------------------|
-    def naiveBayesClassification(self, wordTagList, lineList, tagDict, wordTagDict, tagTagDict):
+    def naiveBayesClassification(self, wordTagList, tagDict, wordTagDict, tagTagDict):
         '''
         
         '''
+        probWTDict = {}
+        probTagTagDict = {}
+        lenWTList = len(wordTagList)
         for index, wordTag in enumerate(wordTagList):
             curWord, curTag = wordTag
-            prevWord, prevTag = wordTagList[index-1]
-            curAllTagList = self.findOtherAllWordTags(curWord, wordTagDict)
-            
-            
+            if (index!=0 and (index+1)!=lenWTList):
+                prevWord, prevTag = wordTagList[index-1]
+                probWgivenT = (wordTagDict[wordTag])/tagDict[curTag]
+                if (curTag,prevTag) in tagTagDict:
+                    probTgivenPrevT = tagTagDict[(curTag, prevTag)]/tagDict[prevTag]
+                else:
+                    probTgivenPrevT=0
+                #if -ends
+                probWTDict[wordTag] = probWgivenT
+                probTagTagDict[(curTag, prevTag)] = probTgivenPrevT
+            #if -ends
+        #for -ends
+        return probWTDict, probTagTagDict
+                
         
 # |--------------------------------naiveBayesClassification---------------------------------|
 # |----------------------------------------------------------------------------|

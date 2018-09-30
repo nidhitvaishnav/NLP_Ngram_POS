@@ -63,7 +63,7 @@ class MyUtil:
             prevWord, nextWord = tup
             prob = probDict[tup]
             cStar = cStarDict[tup]
-            opStr = "("+prevWord+"|"+nextWord+")\t:-\tC*= "+str(cStar)+"\tP*= "+str(prob)+"\n"
+            opStr = "("+prevWord+"|"+nextWord+")\t:-\tC= "+str(cStar)+"\tP= "+str(prob)+"\n"
             file.write(opStr)
         #for -ends
         file.close()

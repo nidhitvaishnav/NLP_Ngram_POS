@@ -4,3 +4,5 @@ __pycache__/
 no_smoothing_prob.txt
 goodTuring_prob.txt
 addOne_prob.txt
+naive_Bayes_TPrevT_Prob.txt
+naive_Bayes_WT_Prob.txt

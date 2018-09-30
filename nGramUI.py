@@ -56,21 +56,6 @@ class NGramUI:
 
 # |--------------------------------myNGramUI---------------------------------|
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == '__main__':
     inFile =  sys.argv[1]
     nGramUI = NGramUI()

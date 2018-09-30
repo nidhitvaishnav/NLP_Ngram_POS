@@ -48,5 +48,25 @@ class MyUtil:
         return True
         
 # |--------------------------------writeAdd1SmoothingInFile---------------------------------|
-    
+# |----------------------------------------------------------------------------|
+# readPOSFile
+# |----------------------------------------------------------------------------|
+    def readPOSFile(self, inFile):
+        '''
+        
+        '''
+        corpusList = []
+        tagList = []
+        with open(inFile) as file:
+            for line in file:
+                tempList = line.split()
+                for item in tempList:
+                    word, tag = item.split("_")
+                    corpusList.append(word)
+                    tagList.append(tag)
+            #for -ends
+        #with -ends
+        file.close()
+        return corpusList, tagList
+# |--------------------------------readPOSFile---------------------------------|
     

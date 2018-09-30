@@ -40,4 +40,25 @@ class NGram:
         return myDict, countV, totalCountN
         
 # |--------------------------------countWords---------------------------------|
+# |----------------------------------------------------------------------------|
+# noSmoothing
+# |----------------------------------------------------------------------------|
+    def noSmoothing(self, biGramList, uniGramDict, biGramDict):
+        '''
+        Probability = P(Cw-1 Cw)/P(Cw-1)
+        Input:  List of bigram in the form of tuple,
+                {unique_unigrams (Vocab): count_Ci} dictionary
+                {unique_bigrams: Count(Cwi-1 Cwi)}
+        Output: 
+        '''
+        probDict = {}
+        for biGram in biGramList:
+            nextWord, prevWord = biGram
+            #print(nextWord, prevWord)
+            biGramCount = biGramDict[biGram]
+            prevWordCount = uniGramDict[prevWord]
+            probDict[biGram]=biGramCount/prevWordCount
+        #for biGram -ends
+        return probDict
+# |--------------------------------noSmoothing---------------------------------|
 

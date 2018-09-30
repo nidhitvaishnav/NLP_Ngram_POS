@@ -30,19 +30,20 @@ class NGramUI:
         #get unigram and bigram counts
         uniGramDict, uniGramCountV, unigramCountN=nGram.countWords(strList)
         biGramDict, biGramCountV, bigramCountN = nGram.countWords(biGramList)
+
+        probDict = nGram.noSmoothing(biGramList, uniGramDict, biGramDict)
         # debug
-        # debug
-        # debug
-        print("uniGramDict =\n{}".format(uniGramDict))
-        #print("biGramDict =\n{}".format(biGramDict))
+        print("probDict =\n{}".format(probDict))
         print("uniGramCountV = {}".format(uniGramCountV))
         print("biGramCountV = {}".format(biGramCountV))
         print("biGramCountN = {}".format(bigramCountN))
         # debug -ends
+        outFile = "no_smoothing_prob.txt"
+        outFlag = myUtil.writeProbability(probDict, outFile)
+        print(outFlag)
 
 
 
-       
 # |--------------------------------myNGramUI---------------------------------|
     
 

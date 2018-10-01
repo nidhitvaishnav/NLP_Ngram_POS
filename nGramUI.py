@@ -41,12 +41,24 @@ class NGramUI:
         outFile = "no_smoothing_prob.txt"
         outFlag = myUtil.writeCStarProbability(probDict, biGramDict, outFile)
         
-        probStrarDict, cStarDict = nGram.add1Smoothing(biGramList, uniGramDict,\
+        probStarDict, cStarDict = nGram.add1Smoothing(biGramList, uniGramDict,\
                                                      biGramDict, uniGramCountV)
+        mybiGramList = [('president','The'), ('wants', 'president'),
+                    ('to','wants'), ('the', 'control'),  ("board",'the'),\
+                     ("control","'s")]
+        for biGram in mybiGramList:
+            word, prevWord = biGram
+            cStar, probStar=nGram.addOneSmoothingWords(word, prevWord, biGramDict, uniGramDict, uniGramCountV)
+            probStarDict[biGram] = probStar
+            cStarDict[biGram] = cStar
+        #for biGram -ends
+        print(cStarDict[('wants', 'president')])
+
+
+
         outFile = "addOne_prob.txt"
-        outFlag = myUtil.writeCStarProbability(probStrarDict, cStarDict, outFile)
-
-
+        outFlag = myUtil.writeCStarProbability(probStarDict, cStarDict, outFile)
+        
         probStrarDict, cStarDict, gtProb0 =nGram.goodTuring(biGramList, uniGramDict, \
                                        biGramDict, uniGramCountV, biGramCountV)
         outFile = "goodTuring_prob.txt"

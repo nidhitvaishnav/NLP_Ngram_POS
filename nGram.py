@@ -51,13 +51,34 @@ class NGram:
         cStarDict = {}
         for biGram in biGramList:
             word, prevWord = biGram
-            biGramCount = biGramDict[biGram]
-            prevWordCount = uniGramDict[prevWord]
-            cStarDict[biGram] = ((biGramCount+1)*prevWordCount)/(prevWordCount+V)
-            probStarDict[biGram] = cStarDict[biGram]/prevWordCount
+            cStarDict[biGram], probStarDict[biGram]=self.addOneSmoothingWords(word, prevWord, biGramDict, uniGramDict, V)
         #for biGram -ends
+        cStarDict[biGram], probStarDict[biGram]=self.addOneSmoothingWords(word, prevWord, biGramDict, uniGramDict, V)
+
         return probStarDict, cStarDict
 # |--------------------------------add1Smoothing--------------------------------|
+# |----------------------------------------------------------------------------|
+# addOneSmoothingWords
+# |----------------------------------------------------------------------------|
+    def addOneSmoothingWords(self, word, prevWord, biGramDict, uniGramDict, V):
+        '''
+        
+        '''
+        biGram = word, prevWord
+        if biGram in biGramDict:
+            biGramCount = biGramDict[biGram]
+        else:
+            biGramCount = 0
+        if prevWord in uniGramDict:
+            prevWordCount = uniGramDict[prevWord]
+            cStar = ((biGramCount+1)*prevWordCount)/(prevWordCount+V)
+            probStar = cStar/prevWordCount
+        else:
+            cStar = 0
+            probStar = 0
+        return cStar, probStar
+# |--------------------------------addOneSmoothingWords---------------------------------|
+    
 # |----------------------------------------------------------------------------|
 # goodTuringDiscounting
 # |----------------------------------------------------------------------------|

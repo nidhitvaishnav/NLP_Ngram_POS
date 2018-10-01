@@ -62,7 +62,11 @@ class MyUtil:
         for tup in probDict:
             prevWord, nextWord = tup
             prob = probDict[tup]
-            cStar = cStarDict[tup]
+            if tup in cStarDict:
+                cStar = cStarDict[tup]
+            else:
+                cStar = 0
+            #if -ends
             opStr = "("+prevWord+"|"+nextWord+")\t:-\tC= "+str(cStar)+"\tP= "+str(prob)+"\n"
             file.write(opStr)
         #for -ends

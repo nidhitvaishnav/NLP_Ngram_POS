@@ -32,12 +32,12 @@ class NGramUI:
         biGramDict, biGramCountV, bigramCountN = myUtil.countWords(biGramList)
 
         probDict = nGram.noSmoothing(biGramList, uniGramDict, biGramDict)
-        # debug
-        print("probDict =\n{}".format(probDict))
-        print("uniGramCountV = {}".format(uniGramCountV))
-        print("biGramCountV = {}".format(biGramCountV))
-        print("biGramCountN = {}".format(bigramCountN))
-        # debug -ends
+#         # debug
+#         print("probDict =\n{}".format(probDict))
+#         print("uniGramCountV = {}".format(uniGramCountV))
+#         print("biGramCountV = {}".format(biGramCountV))
+#         print("biGramCountN = {}".format(bigramCountN))
+#         # debug -ends
         outFile = "no_smoothing_prob.txt"
         outFlag = myUtil.writeCStarProbability(probDict, biGramDict, outFile)
         
@@ -47,11 +47,11 @@ class NGramUI:
         outFlag = myUtil.writeCStarProbability(probStrarDict, cStarDict, outFile)
 
 
-        probStrarDict, cStarDict =nGram.goodTuring(biGramList, uniGramDict, \
+        probStrarDict, cStarDict, gtProb0 =nGram.goodTuring(biGramList, uniGramDict, \
                                        biGramDict, uniGramCountV, biGramCountV)
         outFile = "goodTuring_prob.txt"
         outFlag = myUtil.writeCStarProbability(probStrarDict, cStarDict, outFile)
-
+        print("good turing probability for bigrams which are not in corpus: ", format(gtProb0))
 
 
 # |--------------------------------myNGramUI---------------------------------|

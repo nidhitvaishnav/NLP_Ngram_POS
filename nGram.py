@@ -66,13 +66,12 @@ class NGram:
         
         '''
         bucketDict = self.createBucket(biGramList, biGramDict, unigramCount, biGramCount)
-        # debug
-        print("bucketDict =\n {}".format(dict(sorted(bucketDict.items()))))
-        # debug -ends
+#         # debug
+#         print("bucketDict =\n {}".format(dict(sorted(bucketDict.items()))))
+#         # debug -ends
         pStarDict = {}
         cStarDict = {}
         nXiFi = len(biGramList)
-
         for bigram in biGramList:
             count = biGramDict[bigram]
             nextCount = count+1
@@ -83,7 +82,8 @@ class NGram:
             #if -ends
             pStarDict[bigram]= cStarDict[bigram]/nXiFi  
         #for -ends
-        return pStarDict, cStarDict
+        bucket0Prob = bucketDict[1]/nXiFi
+        return pStarDict, cStarDict, bucket0Prob
 # |--------------------------------goodTuring---------------------------------|
 # |----------------------------------------------------------------------------|
 # createBucket

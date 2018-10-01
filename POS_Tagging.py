@@ -28,26 +28,42 @@ class POS_Tagging:
         
         '''
         probWTDict = {}
-        probTagTagDict = {}
         lenWTList = len(wordTagList)
+        V = len(tagDict)
+        probTagTagDict = self.getTagTagDictProbability(tagDict, tagTagDict)
         for index, wordTag in enumerate(wordTagList):
             curWord, curTag = wordTag
-            if (index!=0 and (index+1)!=lenWTList):
-                prevWord, prevTag = wordTagList[index-1]
-                probWgivenT = (wordTagDict[wordTag])/tagDict[curTag]
-                if (curTag,prevTag) in tagTagDict:
-                    probTgivenPrevT = tagTagDict[(curTag, prevTag)]/tagDict[prevTag]
-                else:
-                    probTgivenPrevT=0
-                #if -ends
-                probWTDict[wordTag] = probWgivenT
-                probTagTagDict[(curTag, prevTag)] = probTgivenPrevT
+            probWgivenT = wordTagDict[wordTag]/tagDict[curTag]
+            probWTDict[wordTag] = probWgivenT
             #if -ends
         #for -ends
         return probWTDict, probTagTagDict
                 
         
 # |--------------------------------naiveBayesClassification---------------------------------|
+# |----------------------------------------------------------------------------|
+# getTagTagDictProbability
+# |----------------------------------------------------------------------------|
+    def getTagTagDictProbability(self,tagDict, tagTagDict):
+        '''
+        
+        '''
+        V = len(tagDict)
+        probTagTagDict = {}
+        for prevTag in tagDict:
+            for curTag in tagDict:
+                if (curTag, prevTag) in tagTagDict:
+                    probTgivenPrevT = (tagTagDict[(curTag, prevTag)]+1)/(tagDict[prevTag]+V)
+                else:
+                    probTgivenPrevT=1/(tagDict[prevTag]+V)
+                    
+                #if -ends
+                probTagTagDict[(curTag, prevTag)]=probTgivenPrevT
+            #for -ends
+        #for -ends
+        return probTagTagDict    
+# |--------------------------------getTagTagDictProbability---------------------------------|
+    
 # |----------------------------------------------------------------------------|
 # findOtherAllWordTags
 # |----------------------------------------------------------------------------|

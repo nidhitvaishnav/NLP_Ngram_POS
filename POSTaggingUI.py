@@ -32,14 +32,18 @@ class POSTaggingUI:
 #         # debug -ends
         probWTDict, probTTDict  = pos_Tagging.naiveBayesClassification(wordTagList, tagDict,\
                                                      wordTagDict, tagTagDict)
-        # debug
-        print("probDict = {}".format(probWTDict))
-        # debug -ends
+#         # debug
+#         print("probDict = {}".format(probWTDict))
+#         # debug -ends
         outFile = "naive_Bayes_WT_Prob.txt"
 #         outFlag = myUtil.writeCStarProbability(probDict, wordTagList, outFile)
         outFlag = myUtil.writeCStarProbability(probWTDict, wordTagDict, outFile)
         outFile = "naive_Bayes_TPrevT_Prob.txt"
         outFlag = myUtil.writeCStarProbability(probTTDict, tagTagDict, outFile)
+#         # debug
+#         print("probTTDict = {}".format(probTTDict))
+#         # debug -ends
+
 
         
 # |---------------------------------myUI---------------------------------------|

@@ -12,7 +12,7 @@ class POSTaggingUI:
         
         '''
         myUtil = MyUtil()
-        tagList, wordTagList, lineList = myUtil.readPOSFile(inFile)
+        wordList, tagList, wordTagList, lineList = myUtil.readPOSFile(inFile)
         
         pos_Tagging = POS_Tagging()
         tagTagList = pos_Tagging.createTagTagList(wordTagList)
@@ -24,12 +24,7 @@ class POSTaggingUI:
         tagDict, tagCountV, tagCountN = myUtil.countWords(tagList)
         tagTagDict, tagTagCountV, tagTagCountN=myUtil.countWords(tagTagList)
         wordTagDict, wordTagCountV, wordTagCountN = myUtil.countWords(wordTagList)
-        
-#         #debug
-#         print("wordTagCountV = {}".format(wordTagCountV))
-#         print("tagCountV = {}".format(tagCountV))
-        print("tagTagCountV = {}".format(tagTagCountV))
-#         # debug -ends
+
         probWTDict, probTTDict  = pos_Tagging.naiveBayesClassification(wordTagList, tagDict,\
                                                      wordTagDict, tagTagDict)
 #         # debug
@@ -43,7 +38,12 @@ class POSTaggingUI:
 #         # debug
 #         print("probTTDict = {}".format(probTTDict))
 #         # debug -ends
-
+        brillsRule, mostProbablePOS  = pos_Tagging.brillsPOSTagging(wordList, tagList)
+        #write rules
+        outFile = 'brillsTags.txt'
+        myUtil.writeBrillsRuleFile(brillsRule, outFile)
+        input = "The_DT president_NN wants_VBZ to_TO control_VB the_DT board_NN 's_POS control_NN"
+        pos_Tagging.applyBrillsRules(input, mostProbablePOS, brillsRule)
 
         
 # |---------------------------------myUI---------------------------------------|

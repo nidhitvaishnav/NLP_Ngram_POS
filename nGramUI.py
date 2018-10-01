@@ -63,7 +63,9 @@ class NGramUI:
                                        biGramDict, uniGramCountV, biGramCountV)
         outFile = "goodTuring_prob.txt"
         outFlag = myUtil.writeCStarProbability(probStrarDict, cStarDict, outFile)
-        print("good turing probability for bigrams which are not in corpus: ", format(gtProb0))
+        # debug
+        print("good turing probability for bigrams which are not in corpus= {}".format(gtProb0))
+        # debug -ends
 
 
 # |--------------------------------myNGramUI---------------------------------|

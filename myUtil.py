@@ -81,6 +81,7 @@ class MyUtil:
         '''
         
         '''
+        wordList = []
         tagList = []
         wordTagList = []
         lineList = []
@@ -91,10 +92,27 @@ class MyUtil:
                 for item in tempList:
                     word, tag = item.split("_")
                     wordTagList.append((word,tag))
+                    wordList.append(word)
                     tagList.append(tag)
             #for -ends
         #with -ends
         file.close()
-        return tagList, wordTagList, lineList
+        return wordList, tagList, wordTagList, lineList
 # |--------------------------------readPOSFile---------------------------------|
+# |----------------------------------------------------------------------------|
+# writeBrillsRuleFile
+# |----------------------------------------------------------------------------|
+    def writeBrillsRuleFile(self, brillsRules, outFile):
+        '''
+        
+        '''
+        int1 = open(outFile, 'w')
+        int1.write('PREV TAG' + '\t' + 'FROM' + '\t' + 'TO' + '\t\t' + 'SCORE' + '\n\n')
+     
+        for i in range(len(brillsRules)):
+            int1.write(str(brillsRules[i][0][0]) + "\t\t\t" + str(brillsRules[i][0][1]) + "\t\t" +
+                       str(brillsRules[i][0][2]) + "\t\t" + str(brillsRules[i][1]) + "\n")
+     
+        int1.close()
+# |--------------------------------writeBrillsRuleFile---------------------------------|
     

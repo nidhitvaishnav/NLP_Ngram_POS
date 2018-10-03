@@ -15,13 +15,15 @@ Given NLP project applies NGram algorithms like No - smoothing, Add-one Smoothin
 ##### myUtil.py	:-
   It contains utility operations like file I/O, data pre-processing etc.
   
+
+
+### Execution instruction:-
+
 - To run bigram functions, like probability without smoothing, probability with add one smoothing and good turing, good turing with discounting
 run nGramUI.py on command line with input file as other argument:
 python nGramUI.py [InputfileName]
 Ex.
 python nGramUI.py nGramCorpus.txt
-
-### Execution instruction:-
 
 - To run Transformation based Part Of Speech tagging functions, like naive bayes transformation or brill's algorithm, run POSTaggingUI.py  on command line with input file as other argument:
 python POSTaggingUI.py [InputFileName]
